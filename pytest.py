@@ -1,6 +1,16 @@
+from flask import Flask, render_template
+
+app = Flask("ersteapp")
+
+@app.route('/')
 def gitpy():
-    print("Hey Furk")
+    return "Hey Furk"
 
-gitpy()
+@app.route('/write')
+def write():
+    return render_template('write.html')
 
-## testest
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)
+
+
