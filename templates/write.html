@@ -1,20 +1,50 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Mein Tagebuch</title>
-        <!-- Bootstrap CSS CDN -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3pV8TcC2zO+K7+PvLbSdXlC2Vf5HARjvZ9n6C4Hb5LTh5OekyJHv6tb6jZ" crossorigin="anonymous">
-    </head>    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Mein Tagebuch</title>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3pV8TcC2zO+K7+PvLbSdXlC2Vf5HARjvZ9n6C4Hb5LTh5OekyJHv6tb6jZ" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Schreibe einen Tagebucheintrag</h1>
-    <form action="/submit_entry" method="post">
-        <textarea name="entry_content"></textarea>
-        <input type="submit" value="Eintrag speichern">
-    </form>
+    <div class="container mt-4">
+        <h1 class="mb-4">Schreibe einen Tagebucheintrag</h1>
+        <form action="/submit_entry" method="post">
+            <div class="form-group">
+                <label for="entry_date">Datum:</label>
+                <input type="date" class="form-control" id="entry_date" name="entry_date" value="{{ today }}" required>
+            </div>
+            <div class="form-group">
+                <label for="entry_mood">Tagesbewertung (1-5):</label>
+                <select class="form-control" id="entry_mood" name="entry_mood">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="entry_highlight">Highlight des Tages:</label>
+                <input type="text" class="form-control" id="entry_highlight" name="entry_highlight" required>
+            </div>
+            <div class="form-group">
+                <label for="entry_lowpoint">Tiefpunkt des Tages:</label>
+                <input type="text" class="form-control" id="entry_lowpoint" name="entry_lowpoint">
+            </div>
+            <div class="form-group">
+                <label for="entry_content">Beschreibung:</label>
+                <textarea class="form-control" id="entry_content" name="entry_content" rows="5" placeholder="Deine Gedanken..." required></textarea>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Eintrag speichern">
+        </form>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
