@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Einträge - Mein Tagebuch</title>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3pV8TcC2zO+K7+PvLbSdXlC2Vf5HARjvZ9n6C4Hb5LTh5OekyJHv6tb6jZ" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="mb-4 text-center">Tagebucheinträge</h1>
+        <ul class="list-group">
+            {% for eintrag in eintraege %}
+            <li class="list-group-item">
+                <strong>{{ eintrag.date }}</strong>
+                <p>Stimmung: {{ eintrag.mood }}</p>
+                <p>Highlight: {{ eintrag.highlight }}</p>
+                <p>Tiefpunkt: {{ eintrag.lowpoint }}</p>
+                <p>{{ eintrag.content }}</p>
+            </li>
+            {% else %}
+            <li class="list-group-item">Keine Einträge vorhanden.</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
