@@ -6,6 +6,11 @@ app = Flask("ersteapp")
 def gitpy():
     return "Hey Furk"
 
+@app.route('/index')
+def index():
+    return render_template('index.html')
+
+
 @app.route('/write')
 def write():
     return render_template('write.html')
