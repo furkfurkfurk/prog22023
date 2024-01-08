@@ -6,6 +6,11 @@
     <title>Einträge - Mein Tagebuch</title>
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3pV8TcC2zO+K7+PvLbSdXlC2Vf5HARjvZ9n6C4Hb5LTh5OekyJHv6tb6jZ" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'arial', sans-serif;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -27,20 +32,22 @@
 
 
 
-    <div class="container mt-4">
-        <h1 class="mb-4 text-center">Tagebucheinträge</h1>
-        <ul class="list-group">
-            {% for eintrag in eintraege %}
-            <li class="list-group-item">
-                <a href="{{ url_for('eintrag_detail', eintrag_id=loop.index) }}">
-                    {{ eintrag.date }}: {{ eintrag.content | truncate(100) }}
-                </a>
-            </li>
-            {% else %}
-            <li class="list-group-item">Keine Einträge vorhanden.</li>
-            {% endfor %}
-        </ul>
+    <div class="row">
+        {% for eintrag in eintraege %}
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">{{ eintrag.date }}</h3>
+                    <h4 class="card-text">Highlight: {{ eintrag.highlight }}</h4>
+                    <a href="{{ url_for('eintrag_detail', eintrag_id=loop.index) }}" class="btn btn-primary">Details anzeigen</a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <p>Keine Einträge vorhanden.</p>
+        {% endfor %}
     </div>
+</div>
     <!-- Bootstrap JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
