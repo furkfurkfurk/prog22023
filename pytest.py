@@ -37,6 +37,13 @@ def submit_entry():
     save_eintrag(eintrag_data)
     return redirect(url_for('index'))
 
+@app.route('/eintrag/<int:eintrag_id>')
+def eintrag_detail(eintrag_id):
+    eintraege = load_eintraege()
+    eintrag = eintraege[eintrag_id - 1]  # Indizes beginnen bei 0, IDs normalerweise bei 1
+    return render_template('eintrag_detail.html', eintrag=eintrag)
+
+
 
 
 @app.route('/')

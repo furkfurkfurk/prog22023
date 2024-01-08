@@ -28,18 +28,11 @@
 
 
     <div class="container mt-4">
-        <h1 class="mb-4 text-center">Tagebucheinträge</h1>
-        <ul class="list-group">
-            {% for eintrag in eintraege %}
-            <li class="list-group-item">
-                <a href="{{ url_for('eintrag_detail', eintrag_id=loop.index) }}">
-                    {{ eintrag.date }}: {{ eintrag.content | truncate(100) }}
-                </a>
-            </li>
-            {% else %}
-            <li class="list-group-item">Keine Einträge vorhanden.</li>
-            {% endfor %}
-        </ul>
+        <h1 class="mb-4 text-center">{{ eintrag.date }}</h1>
+        <p>Stimmung: {{ eintrag.mood }}</p>
+        <p>Highlight: {{ eintrag.highlight }}</p>
+        <p>Tiefpunkt: {{ eintrag.lowpoint }}</p>
+        <p>{{ eintrag.content }}</p>
     </div>
     <!-- Bootstrap JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
