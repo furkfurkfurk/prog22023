@@ -73,8 +73,21 @@ def write():
 
 @app.route('/eintraege')
 def eintraege_anzeigen():
-    eintraege = load_eintraege()  #Einträge aus der JSON-Datei
+    filter_date = request.args.get('filter_date')
+    filter_mood = request.args.get('filter_mood')
+    eintraege = load_eintraege()
+
+    if filter_date:
+        eintraege = [e for e in eintraege if e['date'] == filter_date]
+    if filter_mood:
+        eintraege = [e for e in eintraege if e['mood'] == filter_mood]
+
     return render_template('eintraege.html', eintraege=eintraege)
+
+
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

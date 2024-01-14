@@ -30,6 +30,26 @@
         </div>
     </nav>
 
+    <form action="/eintraege" method="get" class="mb-4">
+        <div class="form-row">
+            <div class="col">
+                <input type="date" class="form-control" name="filter_date" placeholder="Datum">
+            </div>
+            <div class="col">
+                <select class="form-control" name="filter_mood">
+                    <option value="">Stimmung wählen</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary">Filtern</button>
+            </div>
+        </div>
+    </form>
 
 
     <div class="row">
