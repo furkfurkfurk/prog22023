@@ -12,5 +12,19 @@
         "highlight": "dass ich die seite erstellt habe",
         "lowpoint": "hat zuerst nicht funktioniert",
         "content": "Eintrag nummer 2 lets go"
+    },
+    {
+        "date": "2024-01-16",
+        "mood": "1",
+        "highlight": "Gibt kein Highlight heute",
+        "lowpoint": "Gibt sehr viele Tiefpunkte denn Stimmung ist 1",
+        "content": "Heute war kein guter tag denn ich habe die Tagesbewertung 1 angegeben"
+    },
+    {
+        "date": "2024-01-26",
+        "mood": "5",
+        "highlight": "vdfdfv",
+        "lowpoint": "dfvdfv",
+        "content": "lkjkjbkbj"
     }
 ]
