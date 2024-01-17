@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Einträge - Mein Tagebuch</title>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Mein Tagebuch</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/write">Eintrag schreiben</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/eintraege">Einträge ansehen</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+
+    <div class="container">
+        <h2>Eintrag Bearbeiten</h2>
+        <form action="{{ url_for('eintrag_bearbeiten', eintrag_id=eintrag.id) }}" method="post">
+            <div class="form-group">
+                <label for="date">Datum:</label>
+                <input type="date" class="form-control" id="date" name="date" value="{{ eintrag.date }}">
+            </div>
+            <div class="form-group">
+                <label for="mood">Stimmung:</label>
+                <select class="form-control" id="mood" name="mood">
+                    <!-- Optionen für Stimmung hier, mit aktueller Stimmung als ausgewählt -->
+                </select>
+            </div>
+            <!-- Weitere Felder für Highlight, Tiefpunkt, und Inhalt -->
+            <button type="submit" class="btn btn-primary">Änderungen speichern</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS, etc. -->
+</body>
+</html>

@@ -54,7 +54,7 @@
                 <div class="card-body">
                     <h3 class="card-title">{{ eintrag.date }}</h3>
                     <h5 class="card-text">Highlight: {{ eintrag.highlight }}</h5>
-                    <a href="{{ url_for('eintrag_detail', eintrag_id=loop.index) }}" class="btn btn-primary">Details anzeigen</a>
+                    <a href="{{ url_for('eintrag_detail', eintrag_id=eintrag.id) }}" class="btn btn-primary">Details anzeigen</a>
                 </div>
             </div>
         </div>

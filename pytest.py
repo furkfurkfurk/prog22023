@@ -25,17 +25,23 @@ def load_eintraege():
     except (FileNotFoundError, json.JSONDecodeError):
         return []
     
-@app.route('/submit_entry', methods=['POST'])
-def submit_entry():
+@app.route('/submit_entry/<int:new_id>', methods=['POST'])
+def submit_entry(new_id):
+    # Verwende new_id in deiner Funktion
+    eintraege = load_eintraege()
+    
     eintrag_data = {
+        'id': new_id,
         'date': request.form.get('entry_date'),
         'mood': request.form.get('entry_mood'),
         'highlight': request.form.get('entry_highlight'),
         'lowpoint': request.form.get('entry_lowpoint'),
         'content': request.form.get('entry_content')
     }
+    
     save_eintrag(eintrag_data)
     return redirect(url_for('index'))
+
 
 @app.route('/eintrag/<int:eintrag_id>')
 def eintrag_detail(eintrag_id):
@@ -43,6 +49,43 @@ def eintrag_detail(eintrag_id):
     eintrag = eintraege[eintrag_id - 1]  # Indizes beginnen bei 0, IDs normalerweise bei 1
     return render_template('eintrag_detail.html', eintrag=eintrag)
 
+@app.route('/eintrag_bearbeiten/<int:eintrag_id>', methods=['GET', 'POST'])
+def eintrag_bearbeiten(eintrag_id):
+    # Lade alle Einträge
+    eintraege = load_eintraege()
+
+    # Finde den spezifischen Eintrag mit eintrag_id
+    eintrag = next((e for e in eintraege if e['id'] == eintrag_id), None)
+
+    # Überprüfe, ob der Eintrag existiert
+    if eintrag is None:
+        # Fehlerbehandlung, z.B. Weiterleitung zur Fehlerseite oder Anzeige einer Fehlermeldung
+        pass
+
+    if request.method == 'POST':
+        # Die aktualisierten Daten aus dem Formular holen
+        eintrag['date'] = request.form['date']
+        eintrag['mood'] = request.form['mood']
+        eintrag['highlight'] = request.form['highlight']
+        eintrag['lowpoint'] = request.form['lowpoint']
+        eintrag['content'] = request.form['content']
+
+        # Die aktualisierten Einträge speichern
+        save_eintraege(eintraege)
+
+        # Weiterleitung zur Übersichtsseite
+        return redirect(url_for('eintraege_anzeigen'))
+
+    # Das Bearbeitungsformular mit den vorhandenen Eintragsdaten rendern
+    return render_template('eintrag_bearbeiten.html', eintrag=eintrag)
+
+
+def save_eintraege(eintraege): #aktualisierte beiträge
+    try:
+        with open(JSON_FILE, 'w') as file:
+            json.dump(eintraege, file, indent=4)
+    except IOError as e:
+        print(f"Beim Speichern der Einträge ist ein Fehler ist aufgetreten : {e}")
 
 
 
@@ -58,17 +101,22 @@ def index():
 @app.route('/write', methods=['GET', 'POST'])
 def write():
     if request.method == 'POST':
+        eintraege = load_eintraege()
+        new_id = max([eintrag.get('id', 0) for eintrag in eintraege], default=0) + 1
         eintrag_data = {
+            'id': new_id,
             'date': request.form['entry_date'],
             'mood': request.form['entry_mood'],
             'highlight': request.form['entry_highlight'],
             'lowpoint': request.form['entry_lowpoint'],
             'content': request.form['entry_content']
         }
-        save_eintrag(eintrag_data)
-        return redirect(url_for('index'))
+        eintraege.append(eintrag_data)
+        save_eintraege(eintraege)
+        return redirect(url_for('eintraege_anzeigen'))
     today = datetime.now().strftime('%Y-%m-%d')
     return render_template('write.html', today=today)
+
 
 
 @app.route('/eintraege')

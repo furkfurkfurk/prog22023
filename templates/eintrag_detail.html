@@ -35,6 +35,17 @@
         <p>{{ eintrag.content }}</p>
         <a href="{{ url_for('eintraege_anzeigen') }}" class="btn btn-secondary mt-3">Zurück zu allen Einträgen</a>
     </div>
+    
+    <div class="container mt-4">
+        <h1 class="mb-4 text-center">{{ eintrag.date }}</h1>
+        <p>Stimmung: {{ eintrag.mood }}</p>
+        <p>Highlight: {{ eintrag.highlight }}</p>
+        <p>Tiefpunkt: {{ eintrag.lowpoint }}</p>
+        <p>{{ eintrag.content }}</p>
+        <a href="{{ url_for('eintrag_bearbeiten', eintrag_id=eintrag.id) }}" class="btn btn-primary mt-3">Bearbeiten</a>
+        <a href="{{ url_for('eintraege_anzeigen') }}" class="btn btn-secondary mt-3">Zurück zu allen Einträgen</a>
+    </div>
+    
     <!-- Bootstrap JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
