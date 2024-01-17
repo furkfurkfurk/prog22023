@@ -38,13 +38,30 @@
             <div class="form-group">
                 <label for="mood">Stimmung:</label>
                 <select class="form-control" id="mood" name="mood">
-                    <!-- Optionen für Stimmung hier, mit aktueller Stimmung als ausgewählt -->
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <!-- Weitere Stimmungsoptionen hier -->
                 </select>
             </div>
-            <!-- Weitere Felder für Highlight, Tiefpunkt, und Inhalt -->
+            <div class="form-group">
+                <label for="highlight">Highlight:</label>
+                <input type="text" class="form-control" id="highlight" name="highlight" value="{{ eintrag.highlight }}">
+            </div>
+            <div class="form-group">
+                <label for="lowpoint">Tiefpunkt:</label>
+                <input type="text" class="form-control" id="lowpoint" name="lowpoint" value="{{ eintrag.lowpoint }}">
+            </div>
+            <div class="form-group">
+                <label for="content">Inhalt:</label>
+                <textarea class="form-control" id="content" name="content">{{ eintrag.content }}</textarea>
+            </div>
             <button type="submit" class="btn btn-primary">Änderungen speichern</button>
         </form>
     </div>
+    
 
     <!-- Bootstrap JS, etc. -->
 </body>

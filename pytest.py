@@ -115,7 +115,8 @@ def write():
         save_eintraege(eintraege)
         return redirect(url_for('eintraege_anzeigen'))
     today = datetime.now().strftime('%Y-%m-%d')
-    return render_template('write.html', today=today)
+    new_id = 1
+    return render_template('write.html', today=today, new_id=new_id)
 
 
 
