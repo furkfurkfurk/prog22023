@@ -40,7 +40,7 @@
         "content": "awdawd"
     },
     {
-        "id": 7,
+        "id": 6,
         "date": "2024-01-15",
         "mood": "3",
         "highlight": "csdcds",
@@ -48,35 +48,27 @@
         "content": "scdcsdcsdc"
     },
     {
+        "id": 7,
+        "date": "2024-01-06",
+        "mood": "5",
+        "highlight": "Mein letzter eintrag",
+        "lowpoint": "keiner",
+        "content": "beschreibung hier"
+    },
+    {
         "id": 8,
-        "date": "2024-01-17",
+        "date": "2024-01-10",
         "mood": "3",
-        "highlight": "dawdawda",
-        "lowpoint": "dawdawdawd",
-        "content": "dawdawdaw"
+        "highlight": "Was los hier",
+        "lowpoint": "Test test",
+        "content": "beschriebung"
     },
     {
-        "id": 11,
-        "date": "2024-01-04",
-        "mood": "2",
-        "highlight": "dadawdw",
-        "lowpoint": "fdsfvefvefv",
-        "content": "evferverv"
-    },
-    {
-        "id": 12,
-        "date": "2024-01-11",
-        "mood": "3",
-        "highlight": "11 highlights wuhuu",
-        "lowpoint": "keine tiefunkte",
-        "content": "lets go"
-    },
-    {
-        "id": 13,
-        "date": "2024-01-18",
+        "id": 9,
+        "date": "2024-01-12",
         "mood": "4",
-        "highlight": "fwef",
-        "lowpoint": "wefwef",
-        "content": "fwef"
+        "highlight": "Finaler eintrag hoffentlich",
+        "lowpoint": "viele tiefpunkte heute aber geschafft",
+        "content": "sdsdcsdc"
     }
 ]
