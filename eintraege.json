@@ -1,26 +1,18 @@
 [
     {
-        "id": 111,
+        "id": 1,
         "date": "2024-01-01",
         "mood": "1",
         "highlight": "1 highlight",
         "lowpoint": "1 tiefpunkt",
-        "content": "Meine gedanken sind 1111"
+        "content": "gedanken sind 1"
     },
     {
-        "id": 1,
-        "date": "2024-01-01",
-        "mood": "1",
-        "highlight": "1 highlight mit neuer ID",
-        "lowpoint": "tiefpunkt neu ",
-        "content": "sjdcnksjnckjsdnckjsd"
-    },
-    {
-        "id": 1,
+        "id": 2,
         "date": "2024-01-02",
         "mood": "2",
-        "highlight": "2 highlights test",
-        "lowpoint": "2 tiefpunkte ",
-        "content": "222222222"
+        "highlight": "2 highlights",
+        "lowpoint": "2 tiefpunkte",
+        "content": "meine gedanken sind 2 also npsste ID auch 2 sein gopferdami"
     }
 ]

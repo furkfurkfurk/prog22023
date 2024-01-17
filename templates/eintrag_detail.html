@@ -32,9 +32,13 @@
         <p>Highlight: {{ eintrag.highlight }}</p>
         <p>Tiefpunkt: {{ eintrag.lowpoint }}</p>
         <p>{{ eintrag.content }}</p>
+        <form action="{{ url_for('eintrag_loeschen', eintrag_id=eintrag.id) }}" method="post" class="mt-3">
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Möchten Sie diesen Eintrag wirklich löschen?')">Eintrag löschen</button>
+        </form>
         <a href="{{ url_for('eintrag_bearbeiten', eintrag_id=eintrag.id) }}" class="btn btn-primary mt-3">Bearbeiten</a>
         <a href="{{ url_for('eintraege_anzeigen') }}" class="btn btn-secondary mt-3">Zurück zu allen Einträgen</a>
     </div>
+    
     
     <!-- Bootstrap JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

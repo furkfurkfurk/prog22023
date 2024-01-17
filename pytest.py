@@ -102,6 +102,7 @@ def index():
 def write():
     if request.method == 'POST':
         eintraege = load_eintraege()
+        new_id = 1
         new_id = max([eintrag.get('id', 0) for eintrag in eintraege], default=0) + 1
         eintrag_data = {
             'id': new_id,
@@ -114,9 +115,11 @@ def write():
         eintraege.append(eintrag_data)
         save_eintraege(eintraege)
         return redirect(url_for('eintraege_anzeigen'))
-    today = datetime.now().strftime('%Y-%m-%d')
-    new_id = 1
-    return render_template('write.html', today=today, new_id=new_id)
+    else:
+        eintraege = load_eintraege()
+        new_id = max([eintrag.get('id', 0) for eintrag in eintraege], default=0) + 1
+        today = datetime.now().strftime('%Y-%m-%d')
+        return render_template('write.html', today=today, new_id=new_id)
 
 
 
@@ -134,6 +137,27 @@ def eintraege_anzeigen():
     return render_template('eintraege.html', eintraege=eintraege)
 
 
+@app.route('/eintrag_loeschen/<int:eintrag_id>', methods=['POST'])
+def eintrag_loeschen(eintrag_id):
+    # Lade alle Einträge
+    eintraege = load_eintraege()
+
+    # Finde den spezifischen Eintrag mit eintrag_id
+    eintrag = next((e for e in eintraege if e['id'] == eintrag_id), None)
+
+    # Überprüfe, ob der Eintrag existiert
+    if eintrag is None:
+        # Fehlerbehandlung, z.B. Weiterleitung zur Fehlerseite oder Anzeige einer Fehlermeldung
+        pass
+
+    # Entferne den Eintrag aus der Liste
+    eintraege.remove(eintrag)
+
+    # Speichere die aktualisierten Einträge
+    save_eintraege(eintraege)
+
+    # Weiterleitung zur Übersichtsseite
+    return redirect(url_for('eintraege_anzeigen'))
 
 
 
